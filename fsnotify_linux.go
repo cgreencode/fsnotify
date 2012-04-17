@@ -4,28 +4,7 @@
 
 // +build linux
 
-/*
-Package fsnotify implements a wrapper for the Linux inotify system.
-
-Example:
-    watcher, err := fsotify.NewWatcher()
-    if err != nil {
-        log.Fatal(err)
-    }
-    err = watcher.Watch("/tmp")
-    if err != nil {
-        log.Fatal(err)
-    }
-    for {
-        select {
-        case ev := <-watcher.Event:
-            log.Println("event:", ev)
-        case err := <-watcher.Error:
-            log.Println("error:", err)
-        }
-    }
-
-*/
+// Package fsnotify implements a wrapper for the Linux inotify system.
 package fsnotify
 
 import (
@@ -52,7 +31,9 @@ func (e *FileEvent) IsDelete() bool {
 }
 
 // IsModify reports whether the FileEvent was triggerd by a file modification or attribute change
-func (e *FileEvent) IsModify() bool { return ((e.mask & IN_MODIFY) == IN_MODIFY || (e.mask & IN_ATTRIB) == IN_ATTRIB) }
+func (e *FileEvent) IsModify() bool {
+	return ((e.mask&IN_MODIFY) == IN_MODIFY || (e.mask&IN_ATTRIB) == IN_ATTRIB)
+}
 
 // IsRename reports whether the FileEvent was triggerd by a change name
 func (e *FileEvent) IsRename() bool { return (e.mask & IN_MOVE_SELF) == IN_MOVE_SELF }
@@ -252,7 +233,7 @@ const (
 	IN_MOVE_SELF     uint32 = syscall.IN_MOVE_SELF
 	IN_OPEN          uint32 = syscall.IN_OPEN
 
-	OS_AGNOSTIC_EVENTS = IN_CREATE | IN_ATTRIB | IN_MODIFY | IN_MOVE_SELF | IN_DELETE
+	OS_AGNOSTIC_EVENTS = IN_CREATE | IN_ATTRIB | IN_MODIFY | IN_MOVE_SELF | IN_DELETE | IN_DELETE_SELF
 
 	// Special events
 	IN_ISDIR      uint32 = syscall.IN_ISDIR
