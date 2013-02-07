@@ -47,13 +47,13 @@ func TestFsnotifyMultipleOperations(t *testing.T) {
 	const testDirToMoveFiles string = "_test2"
 
 	// Create directory to watch
-	if os.Mkdir(testDir, 0777) != nil {
+	if err := os.Mkdir(testDir, 0777); err != nil {
 		t.Fatalf("Failed to create test directory: %s", err)
 	}
 	defer os.RemoveAll(testDir)
 
 	// Create directory to that's not watched
-	if os.Mkdir(testDirToMoveFiles, 0777) != nil {
+	if err := os.Mkdir(testDirToMoveFiles, 0777); err != nil {
 		t.Fatalf("Failed to create test directory: %s", err)
 	}
 	defer os.RemoveAll(testDirToMoveFiles)
@@ -180,7 +180,7 @@ func TestFsnotifyMultipleCreates(t *testing.T) {
 	const testDir string = "_test"
 
 	// Create directory to watch
-	if os.Mkdir(testDir, 0777) != nil {
+	if err := os.Mkdir(testDir, 0777); err != nil {
 		t.Fatalf("Failed to create test directory: %s", err)
 	}
 	defer os.RemoveAll(testDir)
@@ -310,7 +310,7 @@ func TestFsnotifyDirOnly(t *testing.T) {
 	const testDir string = "_test"
 
 	// Create directory to watch
-	if os.Mkdir(testDir, 0777) != nil {
+	if err := os.Mkdir(testDir, 0777); err != nil {
 		t.Fatalf("Failed to create test directory: %s", err)
 	}
 	defer os.RemoveAll(testDir)
@@ -425,7 +425,7 @@ func TestFsnotifyDeleteWatchedDir(t *testing.T) {
 	const testDir string = "_test"
 
 	// Create directory to watch
-	if os.Mkdir(testDir, 0777) != nil {
+	if err := os.Mkdir(testDir, 0777); err != nil {
 		t.Fatalf("Failed to create test directory: %s", err)
 	}
 
@@ -500,7 +500,7 @@ func TestFsnotifySubDir(t *testing.T) {
 	const testSubDirFile string = "_test/sub/TestFsnotifyFile1.testfile"
 
 	// Create directory to watch
-	if os.Mkdir(testDir, 0777) != nil {
+	if err := os.Mkdir(testDir, 0777); err != nil {
 		t.Fatalf("Failed to create test directory: %s", err)
 	}
 	defer os.RemoveAll(testDir)
@@ -541,7 +541,7 @@ func TestFsnotifySubDir(t *testing.T) {
 	}
 
 	// Create sub-directory
-	if os.Mkdir(testSubDir, 0777) != nil {
+	if err := os.Mkdir(testSubDir, 0777); err != nil {
 		t.Fatalf("Failed to create test sub-directory: %s", err)
 	}
 
@@ -600,7 +600,7 @@ func TestFsnotifyRename(t *testing.T) {
 	const testDir string = "_test"
 
 	// Create directory to watch
-	if os.Mkdir(testDir, 0777) != nil {
+	if err := os.Mkdir(testDir, 0777); err != nil {
 		t.Fatalf("Failed to create test directory: %s", err)
 	}
 	defer os.RemoveAll(testDir)
@@ -696,13 +696,13 @@ func TestFsnotifyRenameToCreate(t *testing.T) {
 	const testDirFrom string = "_testfrom"
 
 	// Create directory to watch
-	if os.Mkdir(testDir, 0777) != nil {
+	if err := os.Mkdir(testDir, 0777); err != nil {
 		t.Fatalf("Failed to create test directory: %s", err)
 	}
 	defer os.RemoveAll(testDir)
 
 	// Create directory to get file
-	if os.Mkdir(testDirFrom, 0777) != nil {
+	if err := os.Mkdir(testDirFrom, 0777); err != nil {
 		t.Fatalf("Failed to create test directory: %s", err)
 	}
 	defer os.RemoveAll(testDirFrom)
@@ -792,13 +792,13 @@ func TestFsnotifyRenameToOverwrite(t *testing.T) {
 	const testFileRenamed string = "_test/TestFsnotifyEvents.testfileRenamed"
 
 	// Create directory to watch
-	if os.Mkdir(testDir, 0777) != nil {
+	if err := os.Mkdir(testDir, 0777); err != nil {
 		t.Fatalf("Failed to create test directory: %s", err)
 	}
 	defer os.RemoveAll(testDir)
 
 	// Create directory to get file
-	if os.Mkdir(testDirFrom, 0777) != nil {
+	if err := os.Mkdir(testDirFrom, 0777); err != nil {
 		t.Fatalf("Failed to create test directory: %s", err)
 	}
 	defer os.RemoveAll(testDirFrom)
@@ -888,7 +888,7 @@ func TestFsnotifyAttrib(t *testing.T) {
 	const testDir string = "_test"
 
 	// Create directory to watch
-	if os.Mkdir(testDir, 0777) != nil {
+	if err := os.Mkdir(testDir, 0777); err != nil {
 		t.Fatalf("Failed to create test directory: %s", err)
 	}
 	defer os.RemoveAll(testDir)
